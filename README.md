@@ -31,7 +31,9 @@ from walledai import Walledai
 
 client = Walledai()
 
-root_retrieve_response = client.root.retrieve()
+moderation_create_response = client.moderation.create(
+    text="string",
+)
 ```
 
 While you can provide a `bearer_token` keyword argument,
@@ -51,7 +53,9 @@ client = AsyncWalledai()
 
 
 async def main() -> None:
-    root_retrieve_response = await client.root.retrieve()
+    moderation_create_response = await client.moderation.create(
+        text="string",
+    )
 
 
 asyncio.run(main())
@@ -84,7 +88,9 @@ from walledai import Walledai
 client = Walledai()
 
 try:
-    client.root.retrieve()
+    client.moderation.create(
+        text="string",
+    )
 except walledai.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -127,7 +133,9 @@ client = Walledai(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).root.retrieve()
+client.with_options(max_retries=5).moderation.create(
+    text="string",
+)
 ```
 
 ### Timeouts
@@ -150,7 +158,9 @@ client = Walledai(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).root.retrieve()
+client.with_options(timeout=5.0).moderation.create(
+    text="string",
+)
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -189,11 +199,13 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from walledai import Walledai
 
 client = Walledai()
-response = client.root.with_raw_response.retrieve()
+response = client.moderation.with_raw_response.create(
+    text="string",
+)
 print(response.headers.get('X-My-Header'))
 
-root = response.parse()  # get the object that `root.retrieve()` would have returned
-print(root)
+moderation = response.parse()  # get the object that `moderation.create()` would have returned
+print(moderation)
 ```
 
 These methods return an [`APIResponse`](https://github.com/stainless-sdks/tree/main/src/walledai/_response.py) object.
@@ -207,7 +219,9 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.root.with_streaming_response.retrieve() as response:
+with client.moderation.with_streaming_response.create(
+    text="string",
+) as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():

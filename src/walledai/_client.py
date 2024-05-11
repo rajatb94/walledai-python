@@ -47,7 +47,6 @@ __all__ = [
 
 class Walledai(SyncAPIClient):
     moderation: resources.ModerationResource
-    root: resources.RootResource
     with_raw_response: WalledaiWithRawResponse
     with_streaming_response: WalledaiWithStreamedResponse
 
@@ -106,7 +105,6 @@ class Walledai(SyncAPIClient):
         )
 
         self.moderation = resources.ModerationResource(self)
-        self.root = resources.RootResource(self)
         self.with_raw_response = WalledaiWithRawResponse(self)
         self.with_streaming_response = WalledaiWithStreamedResponse(self)
 
@@ -217,7 +215,6 @@ class Walledai(SyncAPIClient):
 
 class AsyncWalledai(AsyncAPIClient):
     moderation: resources.AsyncModerationResource
-    root: resources.AsyncRootResource
     with_raw_response: AsyncWalledaiWithRawResponse
     with_streaming_response: AsyncWalledaiWithStreamedResponse
 
@@ -276,7 +273,6 @@ class AsyncWalledai(AsyncAPIClient):
         )
 
         self.moderation = resources.AsyncModerationResource(self)
-        self.root = resources.AsyncRootResource(self)
         self.with_raw_response = AsyncWalledaiWithRawResponse(self)
         self.with_streaming_response = AsyncWalledaiWithStreamedResponse(self)
 
@@ -388,25 +384,21 @@ class AsyncWalledai(AsyncAPIClient):
 class WalledaiWithRawResponse:
     def __init__(self, client: Walledai) -> None:
         self.moderation = resources.ModerationResourceWithRawResponse(client.moderation)
-        self.root = resources.RootResourceWithRawResponse(client.root)
 
 
 class AsyncWalledaiWithRawResponse:
     def __init__(self, client: AsyncWalledai) -> None:
         self.moderation = resources.AsyncModerationResourceWithRawResponse(client.moderation)
-        self.root = resources.AsyncRootResourceWithRawResponse(client.root)
 
 
 class WalledaiWithStreamedResponse:
     def __init__(self, client: Walledai) -> None:
         self.moderation = resources.ModerationResourceWithStreamingResponse(client.moderation)
-        self.root = resources.RootResourceWithStreamingResponse(client.root)
 
 
 class AsyncWalledaiWithStreamedResponse:
     def __init__(self, client: AsyncWalledai) -> None:
         self.moderation = resources.AsyncModerationResourceWithStreamingResponse(client.moderation)
-        self.root = resources.AsyncRootResourceWithStreamingResponse(client.root)
 
 
 Client = Walledai
