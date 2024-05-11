@@ -1,13 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .root import (
-    RootResource,
-    AsyncRootResource,
-    RootResourceWithRawResponse,
-    AsyncRootResourceWithRawResponse,
-    RootResourceWithStreamingResponse,
-    AsyncRootResourceWithStreamingResponse,
-)
 from .moderation import (
     ModerationResource,
     AsyncModerationResource,
@@ -24,10 +16,4 @@ __all__ = [
     "AsyncModerationResourceWithRawResponse",
     "ModerationResourceWithStreamingResponse",
     "AsyncModerationResourceWithStreamingResponse",
-    "RootResource",
-    "AsyncRootResource",
-    "RootResourceWithRawResponse",
-    "AsyncRootResourceWithRawResponse",
-    "RootResourceWithStreamingResponse",
-    "AsyncRootResourceWithStreamingResponse",
 ]
