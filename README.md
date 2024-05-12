@@ -10,7 +10,7 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Documentation
 
-The REST API documentation can be found [on docs.walledai.com](https://docs.walledai.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found [on 34.143.172.165](http://34.143.172.165/docs). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
