@@ -91,7 +91,7 @@ class Walledai(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("WALLEDAI_BASE_URL")
         if base_url is None:
-            base_url = f"https://localhost:8080/test-api"
+            base_url = f"http://34.143.172.165"
 
         super().__init__(
             version=__version__,
@@ -259,7 +259,7 @@ class AsyncWalledai(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("WALLEDAI_BASE_URL")
         if base_url is None:
-            base_url = f"https://localhost:8080/test-api"
+            base_url = f"http://34.143.172.165"
 
         super().__init__(
             version=__version__,
