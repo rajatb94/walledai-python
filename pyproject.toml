@@ -5,7 +5,7 @@ description = "The official Python library for the walledai API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Walledai", email = "dev-feedback@walledai.com" },
+{ name = "Walledai", email = "admin@walledai.com" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",
