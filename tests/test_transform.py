@@ -8,15 +8,15 @@ from typing_extensions import Required, Annotated, TypedDict
 
 import pytest
 
-from walled_ai._types import Base64FileInput
-from walled_ai._utils import (
+from walledai._types import Base64FileInput
+from walledai._utils import (
     PropertyInfo,
     transform as _transform,
     parse_datetime,
     async_transform as _async_transform,
 )
-from walled_ai._compat import PYDANTIC_V2
-from walled_ai._models import BaseModel
+from walledai._compat import PYDANTIC_V2
+from walledai._models import BaseModel
 
 _T = TypeVar("_T")
 

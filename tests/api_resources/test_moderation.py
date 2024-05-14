@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from walled_ai import WalledAI, AsyncWalledAI
+from walledai import Walledai, AsyncWalledai
 from tests.utils import assert_matches_type
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -17,14 +17,14 @@ class TestModeration:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_create(self, client: WalledAI) -> None:
+    def test_method_create(self, client: Walledai) -> None:
         moderation = client.moderation.create(
             text="string",
         )
         assert_matches_type(object, moderation, path=["response"])
 
     @parametrize
-    def test_raw_response_create(self, client: WalledAI) -> None:
+    def test_raw_response_create(self, client: Walledai) -> None:
         response = client.moderation.with_raw_response.create(
             text="string",
         )
@@ -35,7 +35,7 @@ class TestModeration:
         assert_matches_type(object, moderation, path=["response"])
 
     @parametrize
-    def test_streaming_response_create(self, client: WalledAI) -> None:
+    def test_streaming_response_create(self, client: Walledai) -> None:
         with client.moderation.with_streaming_response.create(
             text="string",
         ) as response:
@@ -52,14 +52,14 @@ class TestAsyncModeration:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, async_client: AsyncWalledAI) -> None:
+    async def test_method_create(self, async_client: AsyncWalledai) -> None:
         moderation = await async_client.moderation.create(
             text="string",
         )
         assert_matches_type(object, moderation, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncWalledAI) -> None:
+    async def test_raw_response_create(self, async_client: AsyncWalledai) -> None:
         response = await async_client.moderation.with_raw_response.create(
             text="string",
         )
@@ -70,7 +70,7 @@ class TestAsyncModeration:
         assert_matches_type(object, moderation, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncWalledAI) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncWalledai) -> None:
         async with async_client.moderation.with_streaming_response.create(
             text="string",
         ) as response:

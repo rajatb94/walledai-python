@@ -1,8 +1,8 @@
-# Walled AI Python API library
+# Walledai Python API library
 
 [![PyPI version](https://img.shields.io/pypi/v/walledai.svg)](https://pypi.org/project/walledai/)
 
-The Walled AI Python library provides convenient access to the Walled AI REST API from any Python 3.7+
+The Walledai Python library provides convenient access to the Walledai REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -24,9 +24,9 @@ pip install --pre walledai
 The full API of this library can be found in [api.md](api.md).
 
 ```python
-from walled_ai import WalledAI
+from walledai import Walledai
 
-client = WalledAI(
+client = Walledai(
     api_key="My API Key",
 )
 
@@ -37,13 +37,13 @@ moderation_create_response = client.moderation.create(
 
 ## Async usage
 
-Simply import `AsyncWalledAI` instead of `WalledAI` and use `await` with each API call:
+Simply import `AsyncWalledai` instead of `Walledai` and use `await` with each API call:
 
 ```python
 import asyncio
-from walled_ai import AsyncWalledAI
+from walledai import AsyncWalledai
 
-client = AsyncWalledAI(
+client = AsyncWalledai(
     api_key="My API Key",
 )
 
@@ -70,18 +70,18 @@ Typed requests and responses provide autocomplete and documentation within your 
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `walled_ai.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `walledai.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `walled_ai.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `walledai.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `walled_ai.APIError`.
+All errors inherit from `walledai.APIError`.
 
 ```python
-import walled_ai
-from walled_ai import WalledAI
+import walledai
+from walledai import Walledai
 
-client = WalledAI(
+client = Walledai(
     api_key="My API Key",
 )
 
@@ -89,12 +89,12 @@ try:
     client.moderation.create(
         text="string",
     )
-except walled_ai.APIConnectionError as e:
+except walledai.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except walled_ai.RateLimitError as e:
+except walledai.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except walled_ai.APIStatusError as e:
+except walledai.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -122,10 +122,10 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from walled_ai import WalledAI
+from walledai import Walledai
 
 # Configure the default for all requests:
-client = WalledAI(
+client = Walledai(
     # default is 2
     max_retries=0,
     api_key="My API Key",
@@ -143,17 +143,17 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from walled_ai import WalledAI
+from walledai import Walledai
 
 # Configure the default for all requests:
-client = WalledAI(
+client = Walledai(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
     api_key="My API Key",
 )
 
 # More granular control:
-client = WalledAI(
+client = Walledai(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
     api_key="My API Key",
 )
@@ -174,10 +174,10 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `WALLED_AI_LOG` to `debug`.
+You can enable logging by setting the environment variable `WALLEDAI_LOG` to `debug`.
 
 ```shell
-$ export WALLED_AI_LOG=debug
+$ export WALLEDAI_LOG=debug
 ```
 
 ### How to tell whether `None` means `null` or missing
@@ -197,9 +197,9 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from walled_ai import WalledAI
+from walledai import Walledai
 
-client = WalledAI(
+client = Walledai(
     api_key="My API Key",
 )
 response = client.moderation.with_raw_response.create(
@@ -211,9 +211,9 @@ moderation = response.parse()  # get the object that `moderation.create()` would
 print(moderation)
 ```
 
-These methods return an [`APIResponse`](https://github.com/rajatb94/walledai-python/tree/main/src/walled_ai/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/rajatb94/walledai-python/tree/main/src/walledai/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/rajatb94/walledai-python/tree/main/src/walled_ai/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/rajatb94/walledai-python/tree/main/src/walledai/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -277,10 +277,10 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 - Additional [advanced](https://www.python-httpx.org/advanced/#client-instances) functionality
 
 ```python
-from walled_ai import WalledAI, DefaultHttpxClient
+from walledai import Walledai, DefaultHttpxClient
 
-client = WalledAI(
-    # Or use the `WALLED_AI_BASE_URL` env var
+client = Walledai(
+    # Or use the `WALLEDAI_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
         proxies="http://my.test.proxy.example.com",

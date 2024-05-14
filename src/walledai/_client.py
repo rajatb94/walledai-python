@@ -25,7 +25,7 @@ from ._utils import (
 )
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import WalledAIError, APIStatusError
+from ._exceptions import WalledaiError, APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -38,17 +38,17 @@ __all__ = [
     "ProxiesTypes",
     "RequestOptions",
     "resources",
-    "WalledAI",
-    "AsyncWalledAI",
+    "Walledai",
+    "AsyncWalledai",
     "Client",
     "AsyncClient",
 ]
 
 
-class WalledAI(SyncAPIClient):
+class Walledai(SyncAPIClient):
     moderation: resources.ModerationResource
-    with_raw_response: WalledAIWithRawResponse
-    with_streaming_response: WalledAIWithStreamedResponse
+    with_raw_response: WalledaiWithRawResponse
+    with_streaming_response: WalledaiWithStreamedResponse
 
     # client options
     api_key: str
@@ -76,20 +76,20 @@ class WalledAI(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous WalledAI client instance.
+        """Construct a new synchronous walledai client instance.
 
         This automatically infers the `api_key` argument from the `WALLEDAI_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("WALLEDAI_API_KEY")
         if api_key is None:
-            raise WalledAIError(
+            raise WalledaiError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the WALLEDAI_API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("WALLED_AI_BASE_URL")
+            base_url = os.environ.get("WALLEDAI_BASE_URL")
         if base_url is None:
             base_url = f"http://34.143.172.165"
 
@@ -105,8 +105,8 @@ class WalledAI(SyncAPIClient):
         )
 
         self.moderation = resources.ModerationResource(self)
-        self.with_raw_response = WalledAIWithRawResponse(self)
-        self.with_streaming_response = WalledAIWithStreamedResponse(self)
+        self.with_raw_response = WalledaiWithRawResponse(self)
+        self.with_streaming_response = WalledaiWithStreamedResponse(self)
 
     @property
     @override
@@ -207,10 +207,10 @@ class WalledAI(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncWalledAI(AsyncAPIClient):
+class AsyncWalledai(AsyncAPIClient):
     moderation: resources.AsyncModerationResource
-    with_raw_response: AsyncWalledAIWithRawResponse
-    with_streaming_response: AsyncWalledAIWithStreamedResponse
+    with_raw_response: AsyncWalledaiWithRawResponse
+    with_streaming_response: AsyncWalledaiWithStreamedResponse
 
     # client options
     api_key: str
@@ -238,20 +238,20 @@ class AsyncWalledAI(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async WalledAI client instance.
+        """Construct a new async walledai client instance.
 
         This automatically infers the `api_key` argument from the `WALLEDAI_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("WALLEDAI_API_KEY")
         if api_key is None:
-            raise WalledAIError(
+            raise WalledaiError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the WALLEDAI_API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("WALLED_AI_BASE_URL")
+            base_url = os.environ.get("WALLEDAI_BASE_URL")
         if base_url is None:
             base_url = f"http://34.143.172.165"
 
@@ -267,8 +267,8 @@ class AsyncWalledAI(AsyncAPIClient):
         )
 
         self.moderation = resources.AsyncModerationResource(self)
-        self.with_raw_response = AsyncWalledAIWithRawResponse(self)
-        self.with_streaming_response = AsyncWalledAIWithStreamedResponse(self)
+        self.with_raw_response = AsyncWalledaiWithRawResponse(self)
+        self.with_streaming_response = AsyncWalledaiWithStreamedResponse(self)
 
     @property
     @override
@@ -369,26 +369,26 @@ class AsyncWalledAI(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class WalledAIWithRawResponse:
-    def __init__(self, client: WalledAI) -> None:
+class WalledaiWithRawResponse:
+    def __init__(self, client: Walledai) -> None:
         self.moderation = resources.ModerationResourceWithRawResponse(client.moderation)
 
 
-class AsyncWalledAIWithRawResponse:
-    def __init__(self, client: AsyncWalledAI) -> None:
+class AsyncWalledaiWithRawResponse:
+    def __init__(self, client: AsyncWalledai) -> None:
         self.moderation = resources.AsyncModerationResourceWithRawResponse(client.moderation)
 
 
-class WalledAIWithStreamedResponse:
-    def __init__(self, client: WalledAI) -> None:
+class WalledaiWithStreamedResponse:
+    def __init__(self, client: Walledai) -> None:
         self.moderation = resources.ModerationResourceWithStreamingResponse(client.moderation)
 
 
-class AsyncWalledAIWithStreamedResponse:
-    def __init__(self, client: AsyncWalledAI) -> None:
+class AsyncWalledaiWithStreamedResponse:
+    def __init__(self, client: AsyncWalledai) -> None:
         self.moderation = resources.AsyncModerationResourceWithStreamingResponse(client.moderation)
 
 
-Client = WalledAI
+Client = Walledai
 
-AsyncClient = AsyncWalledAI
+AsyncClient = AsyncWalledai

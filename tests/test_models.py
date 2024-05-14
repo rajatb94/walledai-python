@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from walled_ai._utils import PropertyInfo
-from walled_ai._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from walled_ai._models import BaseModel, construct_type
+from walledai._utils import PropertyInfo
+from walledai._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from walledai._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):
