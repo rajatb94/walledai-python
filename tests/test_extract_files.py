@@ -4,8 +4,8 @@ from typing import Sequence
 
 import pytest
 
-from walledai._types import FileTypes
-from walledai._utils import extract_files
+from walled_ai._types import FileTypes
+from walled_ai._utils import extract_files
 
 
 def test_removes_files_from_input() -> None:

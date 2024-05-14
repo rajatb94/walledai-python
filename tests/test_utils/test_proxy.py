@@ -2,7 +2,7 @@ import operator
 from typing import Any
 from typing_extensions import override
 
-from walledai._utils import LazyProxy
+from walled_ai._utils import LazyProxy
 
 
 class RecursiveLazyProxy(LazyProxy[Any]):

@@ -4,7 +4,7 @@ from urllib.parse import unquote
 
 import pytest
 
-from walledai._qs import Querystring, stringify
+from walled_ai._qs import Querystring, stringify
 
 
 def test_empty() -> None:
