@@ -35,7 +35,7 @@ moderation_create_response = client.moderation.create(
 
 While you can provide a `bearer_token` keyword argument,
 we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `WALLEDAI_BEARER_TOKEN="My Bearer Token"` to your `.env` file
+to add `api_key="My Bearer Token"` to your `.env` file
 so that your Bearer Token is not stored in source control.
 
 ## Async usage
