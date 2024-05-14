@@ -1,11 +1,11 @@
 [project]
 name = "walledai"
-version = "0.4.0-alpha"
+version = "0.5.0-alpha"
 description = "The official Python library for the walledai API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Walledai", email = "dev-feedback@walledai.com" },
+{ name = "Walledai", email = "admin@walled.ai" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",
@@ -39,8 +39,8 @@ classifiers = [
 
 
 [project.urls]
-Homepage = "https://github.com/stainless-sdks/walledai-python"
-Repository = "https://github.com/stainless-sdks/walledai-python"
+Homepage = "https://github.com/rajatb94/walledai-python"
+Repository = "https://github.com/rajatb94/walledai-python"
 
 
 
@@ -108,7 +108,7 @@ path = "README.md"
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
 # replace relative links with absolute links
 pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)'
-replacement = '[\1](https://github.com/stainless-sdks/walledai-python/tree/main/\g<2>)'
+replacement = '[\1](https://github.com/rajatb94/walledai-python/tree/main/\g<2>)'
 
 [tool.black]
 line-length = 120

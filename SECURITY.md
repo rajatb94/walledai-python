@@ -20,7 +20,7 @@ or products provided by Walledai please follow the respective company's security
 
 ### Walledai Terms and Policies
 
-Please contact dev-feedback@walledai.com for any questions or concerns regarding security of our services.
+Please contact admin@walled.ai for any questions or concerns regarding security of our services.
 
 ---
 

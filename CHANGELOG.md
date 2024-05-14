@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0-alpha (2024-05-14)
+
+Full Changelog: [v0.4.0-alpha...v0.5.0-alpha](https://github.com/rajatb94/walledai-python/compare/v0.4.0-alpha...v0.5.0-alpha)
+
+### Features
+
+* **api:** update via SDK Studio ([bb9e474](https://github.com/rajatb94/walledai-python/commit/bb9e4742269966e767fa455831bb645090ead925))
+* **api:** update via SDK Studio ([#16](https://github.com/rajatb94/walledai-python/issues/16)) ([1b75418](https://github.com/rajatb94/walledai-python/commit/1b75418b401ed9e85a240a951cfe48cd27fa930e))
+* **api:** update via SDK Studio ([#18](https://github.com/rajatb94/walledai-python/issues/18)) ([56717ce](https://github.com/rajatb94/walledai-python/commit/56717cea3d8bc80e3582a0c6e441af09d761967e))
+
 ## 0.4.0-alpha (2024-05-14)
 
 Full Changelog: [v0.3.0-alpha...v0.4.0-alpha](https://github.com/rajatb94/walledai-python/compare/v0.3.0-alpha...v0.4.0-alpha)
