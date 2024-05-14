@@ -1,8 +1,8 @@
-# Walledai Python API library
+# WalledAI API library
 
 [![PyPI version](https://img.shields.io/pypi/v/walledai.svg)](https://pypi.org/project/walledai/)
 
-The Walledai Python library provides convenient access to the Walledai REST API from any Python 3.7+
+The WalledAI library provides convenient access to the Walledai REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -10,17 +10,14 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Documentation
 
-The REST API documentation can be found [on docs.walledai.com](https://docs.walledai.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found [on 34.143.172.165](http://34.143.172.165/docs). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
 ```sh
-# install from this staging repo
-pip install git+ssh://git@github.com/stainless-sdks/walledai-python.git
+# install from PyPI
+pip install --pre walledai
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre walledai`
 
 ## Usage
 
@@ -29,17 +26,14 @@ The full API of this library can be found in [api.md](api.md).
 ```python
 from walledai import Walledai
 
-client = Walledai()
+client = Walledai(
+    api_key="My API Key",
+)
 
 moderation_create_response = client.moderation.create(
     text="string",
 )
 ```
-
-While you can provide an `api_key` keyword argument,
-we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `WALLEDAI_API_KEY="My API Key"` to your `.env` file
-so that your API Key is not stored in source control.
 
 ## Async usage
 
@@ -49,7 +43,9 @@ Simply import `AsyncWalledai` instead of `Walledai` and use `await` with each AP
 import asyncio
 from walledai import AsyncWalledai
 
-client = AsyncWalledai()
+client = AsyncWalledai(
+    api_key="My API Key",
+)
 
 
 async def main() -> None:
@@ -85,7 +81,9 @@ All errors inherit from `walledai.APIError`.
 import walledai
 from walledai import Walledai
 
-client = Walledai()
+client = Walledai(
+    api_key="My API Key",
+)
 
 try:
     client.moderation.create(
@@ -130,6 +128,7 @@ from walledai import Walledai
 client = Walledai(
     # default is 2
     max_retries=0,
+    api_key="My API Key",
 )
 
 # Or, configure per-request:
@@ -150,11 +149,13 @@ from walledai import Walledai
 client = Walledai(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
+    api_key="My API Key",
 )
 
 # More granular control:
 client = Walledai(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
+    api_key="My API Key",
 )
 
 # Override per-request:
@@ -198,7 +199,9 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 ```py
 from walledai import Walledai
 
-client = Walledai()
+client = Walledai(
+    api_key="My API Key",
+)
 response = client.moderation.with_raw_response.create(
     text="string",
 )
@@ -208,9 +211,9 @@ moderation = response.parse()  # get the object that `moderation.create()` would
 print(moderation)
 ```
 
-These methods return an [`APIResponse`](https://github.com/stainless-sdks/walledai-python/tree/main/src/walledai/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/rajatb94/walledai-python/tree/main/src/walledai/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/walledai-python/tree/main/src/walledai/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/rajatb94/walledai-python/tree/main/src/walledai/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -283,6 +286,7 @@ client = Walledai(
         proxies="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
+    api_key="My API Key",
 )
 ```
 
@@ -300,7 +304,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/walledai-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/rajatb94/walledai-python/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
