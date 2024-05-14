@@ -91,7 +91,7 @@ class Walledai(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("WALLEDAI_BASE_URL")
         if base_url is None:
-            base_url = f"http://34.143.172.165"
+            base_url = f"https://localhost:8080/test-api"
 
         super().__init__(
             version=__version__,
@@ -112,6 +112,12 @@ class Walledai(SyncAPIClient):
     @override
     def qs(self) -> Querystring:
         return Querystring(array_format="comma")
+
+    @property
+    @override
+    def auth_headers(self) -> dict[str, str]:
+        api_key = self.api_key
+        return {"Authorization": f"Bearer {api_key}"}
 
     @property
     @override
@@ -253,7 +259,7 @@ class AsyncWalledai(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("WALLEDAI_BASE_URL")
         if base_url is None:
-            base_url = f"http://34.143.172.165"
+            base_url = f"https://localhost:8080/test-api"
 
         super().__init__(
             version=__version__,
@@ -274,6 +280,12 @@ class AsyncWalledai(AsyncAPIClient):
     @override
     def qs(self) -> Querystring:
         return Querystring(array_format="comma")
+
+    @property
+    @override
+    def auth_headers(self) -> dict[str, str]:
+        api_key = self.api_key
+        return {"Authorization": f"Bearer {api_key}"}
 
     @property
     @override
