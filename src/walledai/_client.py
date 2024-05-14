@@ -78,13 +78,13 @@ class Walledai(SyncAPIClient):
     ) -> None:
         """Construct a new synchronous walledai client instance.
 
-        This automatically infers the `bearer_token` argument from the `WALLEDAI_BEARER_TOKEN` environment variable if it is not provided.
+        This automatically infers the `bearer_token` argument from the `api_key` environment variable if it is not provided.
         """
         if bearer_token is None:
-            bearer_token = os.environ.get("WALLEDAI_BEARER_TOKEN")
+            bearer_token = os.environ.get("api_key")
         if bearer_token is None:
             raise WalledaiError(
-                "The bearer_token client option must be set either by passing bearer_token to the client or by setting the WALLEDAI_BEARER_TOKEN environment variable"
+                "The bearer_token client option must be set either by passing bearer_token to the client or by setting the api_key environment variable"
             )
         self.bearer_token = bearer_token
 
@@ -246,13 +246,13 @@ class AsyncWalledai(AsyncAPIClient):
     ) -> None:
         """Construct a new async walledai client instance.
 
-        This automatically infers the `bearer_token` argument from the `WALLEDAI_BEARER_TOKEN` environment variable if it is not provided.
+        This automatically infers the `bearer_token` argument from the `api_key` environment variable if it is not provided.
         """
         if bearer_token is None:
-            bearer_token = os.environ.get("WALLEDAI_BEARER_TOKEN")
+            bearer_token = os.environ.get("api_key")
         if bearer_token is None:
             raise WalledaiError(
-                "The bearer_token client option must be set either by passing bearer_token to the client or by setting the WALLEDAI_BEARER_TOKEN environment variable"
+                "The bearer_token client option must be set either by passing bearer_token to the client or by setting the api_key environment variable"
             )
         self.bearer_token = bearer_token
 
