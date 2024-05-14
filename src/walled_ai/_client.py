@@ -25,7 +25,7 @@ from ._utils import (
 )
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import WalledaiError, APIStatusError
+from ._exceptions import WalledAIError, APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -38,25 +38,25 @@ __all__ = [
     "ProxiesTypes",
     "RequestOptions",
     "resources",
-    "Walledai",
-    "AsyncWalledai",
+    "WalledAI",
+    "AsyncWalledAI",
     "Client",
     "AsyncClient",
 ]
 
 
-class Walledai(SyncAPIClient):
+class WalledAI(SyncAPIClient):
     moderation: resources.ModerationResource
-    with_raw_response: WalledaiWithRawResponse
-    with_streaming_response: WalledaiWithStreamedResponse
+    with_raw_response: WalledAIWithRawResponse
+    with_streaming_response: WalledAIWithStreamedResponse
 
     # client options
-    bearer_token: str
+    api_key: str
 
     def __init__(
         self,
         *,
-        bearer_token: str | None = None,
+        api_key: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -76,20 +76,20 @@ class Walledai(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous walledai client instance.
+        """Construct a new synchronous WalledAI client instance.
 
-        This automatically infers the `bearer_token` argument from the `api_key` environment variable if it is not provided.
+        This automatically infers the `api_key` argument from the `WALLEDAI_API_KEY` environment variable if it is not provided.
         """
-        if bearer_token is None:
-            bearer_token = os.environ.get("api_key")
-        if bearer_token is None:
-            raise WalledaiError(
-                "The bearer_token client option must be set either by passing bearer_token to the client or by setting the api_key environment variable"
+        if api_key is None:
+            api_key = os.environ.get("WALLEDAI_API_KEY")
+        if api_key is None:
+            raise WalledAIError(
+                "The api_key client option must be set either by passing api_key to the client or by setting the WALLEDAI_API_KEY environment variable"
             )
-        self.bearer_token = bearer_token
+        self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("WALLEDAI_BASE_URL")
+            base_url = os.environ.get("WALLED_AI_BASE_URL")
         if base_url is None:
             base_url = f"http://34.143.172.165"
 
@@ -105,8 +105,8 @@ class Walledai(SyncAPIClient):
         )
 
         self.moderation = resources.ModerationResource(self)
-        self.with_raw_response = WalledaiWithRawResponse(self)
-        self.with_streaming_response = WalledaiWithStreamedResponse(self)
+        self.with_raw_response = WalledAIWithRawResponse(self)
+        self.with_streaming_response = WalledAIWithStreamedResponse(self)
 
     @property
     @override
@@ -125,7 +125,7 @@ class Walledai(SyncAPIClient):
     def copy(
         self,
         *,
-        bearer_token: str | None = None,
+        api_key: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
@@ -159,7 +159,7 @@ class Walledai(SyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
-            bearer_token=bearer_token or self.bearer_token,
+            api_key=api_key or self.api_key,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -207,18 +207,18 @@ class Walledai(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncWalledai(AsyncAPIClient):
+class AsyncWalledAI(AsyncAPIClient):
     moderation: resources.AsyncModerationResource
-    with_raw_response: AsyncWalledaiWithRawResponse
-    with_streaming_response: AsyncWalledaiWithStreamedResponse
+    with_raw_response: AsyncWalledAIWithRawResponse
+    with_streaming_response: AsyncWalledAIWithStreamedResponse
 
     # client options
-    bearer_token: str
+    api_key: str
 
     def __init__(
         self,
         *,
-        bearer_token: str | None = None,
+        api_key: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -238,20 +238,20 @@ class AsyncWalledai(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async walledai client instance.
+        """Construct a new async WalledAI client instance.
 
-        This automatically infers the `bearer_token` argument from the `api_key` environment variable if it is not provided.
+        This automatically infers the `api_key` argument from the `WALLEDAI_API_KEY` environment variable if it is not provided.
         """
-        if bearer_token is None:
-            bearer_token = os.environ.get("api_key")
-        if bearer_token is None:
-            raise WalledaiError(
-                "The bearer_token client option must be set either by passing bearer_token to the client or by setting the api_key environment variable"
+        if api_key is None:
+            api_key = os.environ.get("WALLEDAI_API_KEY")
+        if api_key is None:
+            raise WalledAIError(
+                "The api_key client option must be set either by passing api_key to the client or by setting the WALLEDAI_API_KEY environment variable"
             )
-        self.bearer_token = bearer_token
+        self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("WALLEDAI_BASE_URL")
+            base_url = os.environ.get("WALLED_AI_BASE_URL")
         if base_url is None:
             base_url = f"http://34.143.172.165"
 
@@ -267,8 +267,8 @@ class AsyncWalledai(AsyncAPIClient):
         )
 
         self.moderation = resources.AsyncModerationResource(self)
-        self.with_raw_response = AsyncWalledaiWithRawResponse(self)
-        self.with_streaming_response = AsyncWalledaiWithStreamedResponse(self)
+        self.with_raw_response = AsyncWalledAIWithRawResponse(self)
+        self.with_streaming_response = AsyncWalledAIWithStreamedResponse(self)
 
     @property
     @override
@@ -287,7 +287,7 @@ class AsyncWalledai(AsyncAPIClient):
     def copy(
         self,
         *,
-        bearer_token: str | None = None,
+        api_key: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
@@ -321,7 +321,7 @@ class AsyncWalledai(AsyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
-            bearer_token=bearer_token or self.bearer_token,
+            api_key=api_key or self.api_key,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -369,26 +369,26 @@ class AsyncWalledai(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class WalledaiWithRawResponse:
-    def __init__(self, client: Walledai) -> None:
+class WalledAIWithRawResponse:
+    def __init__(self, client: WalledAI) -> None:
         self.moderation = resources.ModerationResourceWithRawResponse(client.moderation)
 
 
-class AsyncWalledaiWithRawResponse:
-    def __init__(self, client: AsyncWalledai) -> None:
+class AsyncWalledAIWithRawResponse:
+    def __init__(self, client: AsyncWalledAI) -> None:
         self.moderation = resources.AsyncModerationResourceWithRawResponse(client.moderation)
 
 
-class WalledaiWithStreamedResponse:
-    def __init__(self, client: Walledai) -> None:
+class WalledAIWithStreamedResponse:
+    def __init__(self, client: WalledAI) -> None:
         self.moderation = resources.ModerationResourceWithStreamingResponse(client.moderation)
 
 
-class AsyncWalledaiWithStreamedResponse:
-    def __init__(self, client: AsyncWalledai) -> None:
+class AsyncWalledAIWithStreamedResponse:
+    def __init__(self, client: AsyncWalledAI) -> None:
         self.moderation = resources.AsyncModerationResourceWithStreamingResponse(client.moderation)
 
 
-Client = Walledai
+Client = WalledAI
 
-AsyncClient = AsyncWalledai
+AsyncClient = AsyncWalledAI

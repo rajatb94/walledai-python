@@ -6,8 +6,8 @@ import httpx
 import pytest
 import pydantic
 
-from walledai import Walledai, BaseModel, AsyncWalledai
-from walledai._response import (
+from walled_ai import WalledAI, BaseModel, AsyncWalledAI
+from walled_ai._response import (
     APIResponse,
     BaseAPIResponse,
     AsyncAPIResponse,
@@ -15,8 +15,8 @@ from walledai._response import (
     AsyncBinaryAPIResponse,
     extract_response_type,
 )
-from walledai._streaming import Stream
-from walledai._base_client import FinalRequestOptions
+from walled_ai._streaming import Stream
+from walled_ai._base_client import FinalRequestOptions
 
 
 class ConcreteBaseAPIResponse(APIResponse[bytes]):
@@ -40,7 +40,7 @@ def test_extract_response_type_direct_classes() -> None:
 def test_extract_response_type_direct_class_missing_type_arg() -> None:
     with pytest.raises(
         RuntimeError,
-        match="Expected type <class 'walledai._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
+        match="Expected type <class 'walled_ai._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
     ):
         extract_response_type(AsyncAPIResponse)
 
@@ -60,7 +60,7 @@ class PydanticModel(pydantic.BaseModel):
     ...
 
 
-def test_response_parse_mismatched_basemodel(client: Walledai) -> None:
+def test_response_parse_mismatched_basemodel(client: WalledAI) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -72,13 +72,13 @@ def test_response_parse_mismatched_basemodel(client: Walledai) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from walledai import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from walled_ai import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_mismatched_basemodel(async_client: AsyncWalledai) -> None:
+async def test_async_response_parse_mismatched_basemodel(async_client: AsyncWalledAI) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -90,12 +90,12 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncWall
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from walledai import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from walled_ai import BaseModel`",
     ):
         await response.parse(to=PydanticModel)
 
 
-def test_response_parse_custom_stream(client: Walledai) -> None:
+def test_response_parse_custom_stream(client: WalledAI) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -110,7 +110,7 @@ def test_response_parse_custom_stream(client: Walledai) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_stream(async_client: AsyncWalledai) -> None:
+async def test_async_response_parse_custom_stream(async_client: AsyncWalledAI) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -129,7 +129,7 @@ class CustomModel(BaseModel):
     bar: int
 
 
-def test_response_parse_custom_model(client: Walledai) -> None:
+def test_response_parse_custom_model(client: WalledAI) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -145,7 +145,7 @@ def test_response_parse_custom_model(client: Walledai) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_model(async_client: AsyncWalledai) -> None:
+async def test_async_response_parse_custom_model(async_client: AsyncWalledAI) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
@@ -160,7 +160,7 @@ async def test_async_response_parse_custom_model(async_client: AsyncWalledai) ->
     assert obj.bar == 2
 
 
-def test_response_parse_annotated_type(client: Walledai) -> None:
+def test_response_parse_annotated_type(client: WalledAI) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -177,7 +177,7 @@ def test_response_parse_annotated_type(client: Walledai) -> None:
     assert obj.bar == 2
 
 
-async def test_async_response_parse_annotated_type(async_client: AsyncWalledai) -> None:
+async def test_async_response_parse_annotated_type(async_client: AsyncWalledAI) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
