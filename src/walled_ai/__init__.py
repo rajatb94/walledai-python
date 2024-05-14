@@ -7,11 +7,11 @@ from ._client import (
     Client,
     Stream,
     Timeout,
-    Walledai,
+    WalledAI,
     Transport,
     AsyncClient,
     AsyncStream,
-    AsyncWalledai,
+    AsyncWalledAI,
     RequestOptions,
 )
 from ._models import BaseModel
@@ -22,7 +22,7 @@ from ._exceptions import (
     APIError,
     ConflictError,
     NotFoundError,
-    WalledaiError,
+    WalledAIError,
     APIStatusError,
     RateLimitError,
     APITimeoutError,
@@ -46,7 +46,7 @@ __all__ = [
     "ProxiesTypes",
     "NotGiven",
     "NOT_GIVEN",
-    "WalledaiError",
+    "WalledAIError",
     "APIError",
     "APIStatusError",
     "APITimeoutError",
@@ -66,8 +66,8 @@ __all__ = [
     "AsyncClient",
     "Stream",
     "AsyncStream",
-    "Walledai",
-    "AsyncWalledai",
+    "WalledAI",
+    "AsyncWalledAI",
     "file_from_path",
     "BaseModel",
     "DEFAULT_TIMEOUT",
@@ -82,12 +82,12 @@ _setup_logging()
 # Update the __module__ attribute for exported symbols so that
 # error messages point to this module instead of the module
 # it was originally defined in, e.g.
-# walledai._exceptions.NotFoundError -> walledai.NotFoundError
+# walled_ai._exceptions.NotFoundError -> walled_ai.NotFoundError
 __locals = locals()
 for __name in __all__:
     if not __name.startswith("__"):
         try:
-            __locals[__name].__module__ = "walledai"
+            __locals[__name].__module__ = "walled_ai"
         except (TypeError, AttributeError):
             # Some of our exported symbols are builtins which we can't set attributes for.
             pass

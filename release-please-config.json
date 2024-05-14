@@ -61,6 +61,6 @@
   ],
   "release-type": "python",
   "extra-files": [
-    "src/walledai/_version.py"
+    "src/walled_ai/_version.py"
   ]
 }
