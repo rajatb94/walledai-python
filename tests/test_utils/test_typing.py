@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from walled_ai._utils import extract_type_var_from_base
+from walledai._utils import extract_type_var_from_base
 
 _T = TypeVar("_T")
 _T2 = TypeVar("_T2")

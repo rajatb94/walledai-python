@@ -18,11 +18,11 @@ __all__ = [
 ]
 
 
-class WalledAIError(Exception):
+class WalledaiError(Exception):
     pass
 
 
-class APIError(WalledAIError):
+class APIError(WalledaiError):
     message: str
     request: httpx.Request
 
