@@ -1,6 +1,6 @@
 [project]
 name = "walledai"
-version = "0.3.0-alpha"
+version = "0.4.0-alpha"
 description = "The official Python library for the WalledAI API"
 dynamic = ["readme"]
 license = "Apache-2.0"
