@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.10.0-alpha (2024-05-15)
+
+Full Changelog: [v0.9.0-alpha...v0.10.0-alpha](https://github.com/rajatb94/walledai-python/compare/v0.9.0-alpha...v0.10.0-alpha)
+
+### Features
+
+* **api:** update via SDK Studio ([#33](https://github.com/rajatb94/walledai-python/issues/33)) ([ff8031d](https://github.com/rajatb94/walledai-python/commit/ff8031dba7a2ebdffe89eb786b56bb63379c1ecd))
+
 ## 0.9.0-alpha (2024-05-15)
 
 Full Changelog: [v0.8.0-alpha...v0.9.0-alpha](https://github.com/rajatb94/walledai-python/compare/v0.8.0-alpha...v0.9.0-alpha)
