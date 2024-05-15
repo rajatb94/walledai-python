@@ -27,7 +27,7 @@ The full API of this library can be found in [api.md](api.md).
 from walledai import Walledai
 
 client = Walledai(
-    api_key="My API Key",
+    bearer_token="My Bearer Token",
 )
 
 moderation_create_response = client.moderation.create(
@@ -44,7 +44,7 @@ import asyncio
 from walledai import AsyncWalledai
 
 client = AsyncWalledai(
-    api_key="My API Key",
+    bearer_token="My Bearer Token",
 )
 
 
@@ -82,7 +82,7 @@ import walledai
 from walledai import Walledai
 
 client = Walledai(
-    api_key="My API Key",
+    bearer_token="My Bearer Token",
 )
 
 try:
@@ -128,7 +128,7 @@ from walledai import Walledai
 client = Walledai(
     # default is 2
     max_retries=0,
-    api_key="My API Key",
+    bearer_token="My Bearer Token",
 )
 
 # Or, configure per-request:
@@ -149,13 +149,13 @@ from walledai import Walledai
 client = Walledai(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
-    api_key="My API Key",
+    bearer_token="My Bearer Token",
 )
 
 # More granular control:
 client = Walledai(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
-    api_key="My API Key",
+    bearer_token="My Bearer Token",
 )
 
 # Override per-request:
@@ -200,7 +200,7 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from walledai import Walledai
 
 client = Walledai(
-    api_key="My API Key",
+    bearer_token="My Bearer Token",
 )
 response = client.moderation.with_raw_response.create(
     text="string",
@@ -286,7 +286,7 @@ client = Walledai(
         proxies="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
-    api_key="My API Key",
+    bearer_token="My Bearer Token",
 )
 ```
 
