@@ -26,14 +26,17 @@ The full API of this library can be found in [api.md](api.md).
 ```python
 from walledai import Walledai
 
-client = Walledai(
-    api_key="My API Key",
-)
+client = Walledai()
 
 moderation_create_response = client.moderation.create(
     text="string",
 )
 ```
+
+While you can provide a `bearer_token` keyword argument,
+we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
+to add `WALLEDAI_API_KEY="My Bearer Token"` to your `.env` file
+so that your Bearer Token is not stored in source control.
 
 ## Async usage
 
@@ -43,9 +46,7 @@ Simply import `AsyncWalledai` instead of `Walledai` and use `await` with each AP
 import asyncio
 from walledai import AsyncWalledai
 
-client = AsyncWalledai(
-    api_key="My API Key",
-)
+client = AsyncWalledai()
 
 
 async def main() -> None:
@@ -81,9 +82,7 @@ All errors inherit from `walledai.APIError`.
 import walledai
 from walledai import Walledai
 
-client = Walledai(
-    api_key="My API Key",
-)
+client = Walledai()
 
 try:
     client.moderation.create(
@@ -128,7 +127,6 @@ from walledai import Walledai
 client = Walledai(
     # default is 2
     max_retries=0,
-    api_key="My API Key",
 )
 
 # Or, configure per-request:
@@ -149,13 +147,11 @@ from walledai import Walledai
 client = Walledai(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
-    api_key="My API Key",
 )
 
 # More granular control:
 client = Walledai(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
-    api_key="My API Key",
 )
 
 # Override per-request:
@@ -199,9 +195,7 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 ```py
 from walledai import Walledai
 
-client = Walledai(
-    api_key="My API Key",
-)
+client = Walledai()
 response = client.moderation.with_raw_response.create(
     text="string",
 )
@@ -286,7 +280,6 @@ client = Walledai(
         proxies="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
-    api_key="My API Key",
 )
 ```
 
