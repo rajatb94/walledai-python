@@ -6,7 +6,7 @@ import httpx
 import pytest
 import pydantic
 
-from walledai import Walledai, BaseModel, AsyncWalledai
+from walledai import WalledAI, BaseModel, AsyncWalledAI
 from walledai._response import (
     APIResponse,
     BaseAPIResponse,
@@ -60,7 +60,7 @@ class PydanticModel(pydantic.BaseModel):
     ...
 
 
-def test_response_parse_mismatched_basemodel(client: Walledai) -> None:
+def test_response_parse_mismatched_basemodel(client: WalledAI) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -78,7 +78,7 @@ def test_response_parse_mismatched_basemodel(client: Walledai) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_mismatched_basemodel(async_client: AsyncWalledai) -> None:
+async def test_async_response_parse_mismatched_basemodel(async_client: AsyncWalledAI) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -95,7 +95,7 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncWall
         await response.parse(to=PydanticModel)
 
 
-def test_response_parse_custom_stream(client: Walledai) -> None:
+def test_response_parse_custom_stream(client: WalledAI) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -110,7 +110,7 @@ def test_response_parse_custom_stream(client: Walledai) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_stream(async_client: AsyncWalledai) -> None:
+async def test_async_response_parse_custom_stream(async_client: AsyncWalledAI) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -129,7 +129,7 @@ class CustomModel(BaseModel):
     bar: int
 
 
-def test_response_parse_custom_model(client: Walledai) -> None:
+def test_response_parse_custom_model(client: WalledAI) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -145,7 +145,7 @@ def test_response_parse_custom_model(client: Walledai) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_model(async_client: AsyncWalledai) -> None:
+async def test_async_response_parse_custom_model(async_client: AsyncWalledAI) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
@@ -160,7 +160,7 @@ async def test_async_response_parse_custom_model(async_client: AsyncWalledai) ->
     assert obj.bar == 2
 
 
-def test_response_parse_annotated_type(client: Walledai) -> None:
+def test_response_parse_annotated_type(client: WalledAI) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -177,7 +177,7 @@ def test_response_parse_annotated_type(client: Walledai) -> None:
     assert obj.bar == 2
 
 
-async def test_async_response_parse_annotated_type(async_client: AsyncWalledai) -> None:
+async def test_async_response_parse_annotated_type(async_client: AsyncWalledAI) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,

@@ -25,7 +25,7 @@ from ._utils import (
 )
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import WalledaiError, APIStatusError
+from ._exceptions import WalledAIError, APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -38,17 +38,17 @@ __all__ = [
     "ProxiesTypes",
     "RequestOptions",
     "resources",
-    "Walledai",
-    "AsyncWalledai",
+    "WalledAI",
+    "AsyncWalledAI",
     "Client",
     "AsyncClient",
 ]
 
 
-class Walledai(SyncAPIClient):
+class WalledAI(SyncAPIClient):
     moderation: resources.ModerationResource
-    with_raw_response: WalledaiWithRawResponse
-    with_streaming_response: WalledaiWithStreamedResponse
+    with_raw_response: WalledAIWithRawResponse
+    with_streaming_response: WalledAIWithStreamedResponse
 
     # client options
     api_key: str
@@ -83,7 +83,7 @@ class Walledai(SyncAPIClient):
         if api_key is None:
             api_key = os.environ.get("WALLEDAI_API_KEY")
         if api_key is None:
-            raise WalledaiError(
+            raise WalledAIError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the WALLEDAI_API_KEY environment variable"
             )
         self.api_key = api_key
@@ -105,8 +105,8 @@ class Walledai(SyncAPIClient):
         )
 
         self.moderation = resources.ModerationResource(self)
-        self.with_raw_response = WalledaiWithRawResponse(self)
-        self.with_streaming_response = WalledaiWithStreamedResponse(self)
+        self.with_raw_response = WalledAIWithRawResponse(self)
+        self.with_streaming_response = WalledAIWithStreamedResponse(self)
 
     @property
     @override
@@ -213,10 +213,10 @@ class Walledai(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncWalledai(AsyncAPIClient):
+class AsyncWalledAI(AsyncAPIClient):
     moderation: resources.AsyncModerationResource
-    with_raw_response: AsyncWalledaiWithRawResponse
-    with_streaming_response: AsyncWalledaiWithStreamedResponse
+    with_raw_response: AsyncWalledAIWithRawResponse
+    with_streaming_response: AsyncWalledAIWithStreamedResponse
 
     # client options
     api_key: str
@@ -251,7 +251,7 @@ class AsyncWalledai(AsyncAPIClient):
         if api_key is None:
             api_key = os.environ.get("WALLEDAI_API_KEY")
         if api_key is None:
-            raise WalledaiError(
+            raise WalledAIError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the WALLEDAI_API_KEY environment variable"
             )
         self.api_key = api_key
@@ -273,8 +273,8 @@ class AsyncWalledai(AsyncAPIClient):
         )
 
         self.moderation = resources.AsyncModerationResource(self)
-        self.with_raw_response = AsyncWalledaiWithRawResponse(self)
-        self.with_streaming_response = AsyncWalledaiWithStreamedResponse(self)
+        self.with_raw_response = AsyncWalledAIWithRawResponse(self)
+        self.with_streaming_response = AsyncWalledAIWithStreamedResponse(self)
 
     @property
     @override
@@ -381,26 +381,26 @@ class AsyncWalledai(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class WalledaiWithRawResponse:
-    def __init__(self, client: Walledai) -> None:
+class WalledAIWithRawResponse:
+    def __init__(self, client: WalledAI) -> None:
         self.moderation = resources.ModerationResourceWithRawResponse(client.moderation)
 
 
-class AsyncWalledaiWithRawResponse:
-    def __init__(self, client: AsyncWalledai) -> None:
+class AsyncWalledAIWithRawResponse:
+    def __init__(self, client: AsyncWalledAI) -> None:
         self.moderation = resources.AsyncModerationResourceWithRawResponse(client.moderation)
 
 
-class WalledaiWithStreamedResponse:
-    def __init__(self, client: Walledai) -> None:
+class WalledAIWithStreamedResponse:
+    def __init__(self, client: WalledAI) -> None:
         self.moderation = resources.ModerationResourceWithStreamingResponse(client.moderation)
 
 
-class AsyncWalledaiWithStreamedResponse:
-    def __init__(self, client: AsyncWalledai) -> None:
+class AsyncWalledAIWithStreamedResponse:
+    def __init__(self, client: AsyncWalledAI) -> None:
         self.moderation = resources.AsyncModerationResourceWithStreamingResponse(client.moderation)
 
 
-Client = Walledai
+Client = WalledAI
 
-AsyncClient = AsyncWalledai
+AsyncClient = AsyncWalledAI
