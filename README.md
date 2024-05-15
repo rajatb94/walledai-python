@@ -24,9 +24,13 @@ pip install --pre walledai
 The full API of this library can be found in [api.md](api.md).
 
 ```python
+import os
 from walledai import Walledai
 
-client = Walledai()
+client = Walledai(
+    # This is the default and can be omitted
+    api_key=os.environ.get("WALLEDAI_API_KEY"),
+)
 
 moderation_create_response = client.moderation.create(
     text="string",
@@ -43,10 +47,14 @@ so that your API Key is not stored in source control.
 Simply import `AsyncWalledai` instead of `Walledai` and use `await` with each API call:
 
 ```python
+import os
 import asyncio
 from walledai import AsyncWalledai
 
-client = AsyncWalledai()
+client = AsyncWalledai(
+    # This is the default and can be omitted
+    api_key=os.environ.get("WALLEDAI_API_KEY"),
+)
 
 
 async def main() -> None:
