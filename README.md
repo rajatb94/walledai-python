@@ -2,7 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/walledai.svg)](https://pypi.org/project/walledai/)
 
-The WalledAI library provides convenient access to the Walledai REST API from any Python 3.7+
+The WalledAI library provides convenient access to the WALLEDAI REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -25,9 +25,9 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from walledai import Walledai
+from walledai import WalledAI
 
-client = Walledai(
+client = WalledAI(
     # This is the default and can be omitted
     api_key=os.environ.get("WALLEDAI_API_KEY"),
 )
@@ -44,14 +44,14 @@ so that your API Key is not stored in source control.
 
 ## Async usage
 
-Simply import `AsyncWalledai` instead of `Walledai` and use `await` with each API call:
+Simply import `AsyncWalledAI` instead of `WalledAI` and use `await` with each API call:
 
 ```python
 import os
 import asyncio
-from walledai import AsyncWalledai
+from walledai import AsyncWalledAI
 
-client = AsyncWalledai(
+client = AsyncWalledAI(
     # This is the default and can be omitted
     api_key=os.environ.get("WALLEDAI_API_KEY"),
 )
@@ -88,9 +88,9 @@ All errors inherit from `walledai.APIError`.
 
 ```python
 import walledai
-from walledai import Walledai
+from walledai import WalledAI
 
-client = Walledai()
+client = WalledAI()
 
 try:
     client.moderation.create(
@@ -129,10 +129,10 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from walledai import Walledai
+from walledai import WalledAI
 
 # Configure the default for all requests:
-client = Walledai(
+client = WalledAI(
     # default is 2
     max_retries=0,
 )
@@ -149,16 +149,16 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from walledai import Walledai
+from walledai import WalledAI
 
 # Configure the default for all requests:
-client = Walledai(
+client = WalledAI(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
 )
 
 # More granular control:
-client = Walledai(
+client = WalledAI(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
@@ -201,9 +201,9 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from walledai import Walledai
+from walledai import WalledAI
 
-client = Walledai()
+client = WalledAI()
 response = client.moderation.with_raw_response.create(
     text="string",
 )
@@ -279,9 +279,9 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 - Additional [advanced](https://www.python-httpx.org/advanced/#client-instances) functionality
 
 ```python
-from walledai import Walledai, DefaultHttpxClient
+from walledai import WalledAI, DefaultHttpxClient
 
-client = Walledai(
+client = WalledAI(
     # Or use the `WALLEDAI_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
