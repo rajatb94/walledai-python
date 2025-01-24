@@ -18,9 +18,7 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import (
-    make_request_options,
-)
+from .._base_client import make_request_options
 
 __all__ = ["ModerationResource", "AsyncModerationResource"]
 
@@ -28,10 +26,21 @@ __all__ = ["ModerationResource", "AsyncModerationResource"]
 class ModerationResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ModerationResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/rajatb94/walledai-python#accessing-raw-response-data-eg-headers
+        """
         return ModerationResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ModerationResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/rajatb94/walledai-python#with_streaming_response
+        """
         return ModerationResourceWithStreamingResponse(self)
 
     def create(
@@ -58,7 +67,7 @@ class ModerationResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/moderation/",
+            "/guardrail",
             body=maybe_transform({"text": text}, moderation_create_params.ModerationCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -70,10 +79,21 @@ class ModerationResource(SyncAPIResource):
 class AsyncModerationResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncModerationResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/rajatb94/walledai-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncModerationResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncModerationResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/rajatb94/walledai-python#with_streaming_response
+        """
         return AsyncModerationResourceWithStreamingResponse(self)
 
     async def create(
@@ -100,7 +120,7 @@ class AsyncModerationResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/moderation/",
+            "/guardrail",
             body=await async_maybe_transform({"text": text}, moderation_create_params.ModerationCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
