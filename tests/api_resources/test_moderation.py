@@ -19,14 +19,14 @@ class TestModeration:
     @parametrize
     def test_method_create(self, client: WalledAI) -> None:
         moderation = client.moderation.create(
-            text="string",
+            text="text",
         )
         assert_matches_type(object, moderation, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: WalledAI) -> None:
         response = client.moderation.with_raw_response.create(
-            text="string",
+            text="text",
         )
 
         assert response.is_closed is True
@@ -37,7 +37,7 @@ class TestModeration:
     @parametrize
     def test_streaming_response_create(self, client: WalledAI) -> None:
         with client.moderation.with_streaming_response.create(
-            text="string",
+            text="text",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -54,14 +54,14 @@ class TestAsyncModeration:
     @parametrize
     async def test_method_create(self, async_client: AsyncWalledAI) -> None:
         moderation = await async_client.moderation.create(
-            text="string",
+            text="text",
         )
         assert_matches_type(object, moderation, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncWalledAI) -> None:
         response = await async_client.moderation.with_raw_response.create(
-            text="string",
+            text="text",
         )
 
         assert response.is_closed is True
@@ -72,7 +72,7 @@ class TestAsyncModeration:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncWalledAI) -> None:
         async with async_client.moderation.with_streaming_response.create(
-            text="string",
+            text="text",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
