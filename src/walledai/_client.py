@@ -8,7 +8,7 @@ from typing_extensions import Self, override
 
 import httpx
 
-from . import resources, _exceptions
+from . import _exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
@@ -24,6 +24,7 @@ from ._utils import (
     get_async_library,
 )
 from ._version import __version__
+from .resources import moderation
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import WalledAIError, APIStatusError
 from ._base_client import (
@@ -37,7 +38,6 @@ __all__ = [
     "Transport",
     "ProxiesTypes",
     "RequestOptions",
-    "resources",
     "WalledAI",
     "AsyncWalledAI",
     "Client",
@@ -46,7 +46,7 @@ __all__ = [
 
 
 class WalledAI(SyncAPIClient):
-    moderation: resources.ModerationResource
+    moderation: moderation.ModerationResource
     with_raw_response: WalledAIWithRawResponse
     with_streaming_response: WalledAIWithStreamedResponse
 
@@ -91,7 +91,7 @@ class WalledAI(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("WALLEDAI_BASE_URL")
         if base_url is None:
-            base_url = f"http://34.143.172.165"
+            base_url = f"https://idy5alt3vg.execute-api.ap-southeast-1.amazonaws.com/Development"
 
         super().__init__(
             version=__version__,
@@ -104,7 +104,7 @@ class WalledAI(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.moderation = resources.ModerationResource(self)
+        self.moderation = moderation.ModerationResource(self)
         self.with_raw_response = WalledAIWithRawResponse(self)
         self.with_streaming_response = WalledAIWithStreamedResponse(self)
 
@@ -214,7 +214,7 @@ class WalledAI(SyncAPIClient):
 
 
 class AsyncWalledAI(AsyncAPIClient):
-    moderation: resources.AsyncModerationResource
+    moderation: moderation.AsyncModerationResource
     with_raw_response: AsyncWalledAIWithRawResponse
     with_streaming_response: AsyncWalledAIWithStreamedResponse
 
@@ -259,7 +259,7 @@ class AsyncWalledAI(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("WALLEDAI_BASE_URL")
         if base_url is None:
-            base_url = f"http://34.143.172.165"
+            base_url = f"https://idy5alt3vg.execute-api.ap-southeast-1.amazonaws.com/Development"
 
         super().__init__(
             version=__version__,
@@ -272,7 +272,7 @@ class AsyncWalledAI(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.moderation = resources.AsyncModerationResource(self)
+        self.moderation = moderation.AsyncModerationResource(self)
         self.with_raw_response = AsyncWalledAIWithRawResponse(self)
         self.with_streaming_response = AsyncWalledAIWithStreamedResponse(self)
 
@@ -383,22 +383,22 @@ class AsyncWalledAI(AsyncAPIClient):
 
 class WalledAIWithRawResponse:
     def __init__(self, client: WalledAI) -> None:
-        self.moderation = resources.ModerationResourceWithRawResponse(client.moderation)
+        self.moderation = moderation.ModerationResourceWithRawResponse(client.moderation)
 
 
 class AsyncWalledAIWithRawResponse:
     def __init__(self, client: AsyncWalledAI) -> None:
-        self.moderation = resources.AsyncModerationResourceWithRawResponse(client.moderation)
+        self.moderation = moderation.AsyncModerationResourceWithRawResponse(client.moderation)
 
 
 class WalledAIWithStreamedResponse:
     def __init__(self, client: WalledAI) -> None:
-        self.moderation = resources.ModerationResourceWithStreamingResponse(client.moderation)
+        self.moderation = moderation.ModerationResourceWithStreamingResponse(client.moderation)
 
 
 class AsyncWalledAIWithStreamedResponse:
     def __init__(self, client: AsyncWalledAI) -> None:
-        self.moderation = resources.AsyncModerationResourceWithStreamingResponse(client.moderation)
+        self.moderation = moderation.AsyncModerationResourceWithStreamingResponse(client.moderation)
 
 
 Client = WalledAI
