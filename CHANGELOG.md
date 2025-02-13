@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.16.0-alpha (2025-02-13)
+
+Full Changelog: [v0.15.0-alpha...v0.16.0-alpha](https://github.com/rajatb94/walledai-python/compare/v0.15.0-alpha...v0.16.0-alpha)
+
+### Features
+
+* **client:** send `X-Stainless-Read-Timeout` header ([#55](https://github.com/rajatb94/walledai-python/issues/55)) ([941f911](https://github.com/rajatb94/walledai-python/commit/941f9110e97a78c01ce7bfb236a4022457ddab7e))
+
+
+### Chores
+
+* **internal:** bummp ruff dependency ([#54](https://github.com/rajatb94/walledai-python/issues/54)) ([293daba](https://github.com/rajatb94/walledai-python/commit/293dabae13c60421d1f70ecfffabb82e5ec30e5e))
+* **internal:** change default timeout to an int ([#52](https://github.com/rajatb94/walledai-python/issues/52)) ([e9caaf0](https://github.com/rajatb94/walledai-python/commit/e9caaf0ae6211f81bc77615b93070e610c141931))
+* **internal:** fix type traversing dictionary params ([#56](https://github.com/rajatb94/walledai-python/issues/56)) ([e2966b8](https://github.com/rajatb94/walledai-python/commit/e2966b8d32839d2ace23d562be36f91b981132de))
+* **internal:** minor type handling changes ([#57](https://github.com/rajatb94/walledai-python/issues/57)) ([246bdf6](https://github.com/rajatb94/walledai-python/commit/246bdf60c55cb9e26b36b99f0ea5198ff90554f0))
+* **internal:** update client tests ([#58](https://github.com/rajatb94/walledai-python/issues/58)) ([912479f](https://github.com/rajatb94/walledai-python/commit/912479fb88e040f1dcd7b9acbcb51b6d7eb7b738))
+
 ## 0.15.0-alpha (2025-01-24)
 
 Full Changelog: [v0.14.0-alpha...v0.15.0-alpha](https://github.com/rajatb94/walledai-python/compare/v0.14.0-alpha...v0.15.0-alpha)
