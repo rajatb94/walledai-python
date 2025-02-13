@@ -23,6 +23,7 @@ from pydantic import ValidationError
 
 from walledai import WalledAI, AsyncWalledAI, APIResponseValidationError
 from walledai._types import Omit
+from walledai._utils import maybe_transform
 from walledai._models import BaseModel, FinalRequestOptions
 from walledai._constants import RAW_RESPONSE_HEADER
 from walledai._exceptions import WalledAIError, APIStatusError, APITimeoutError, APIResponseValidationError
@@ -32,6 +33,7 @@ from walledai._base_client import (
     BaseClient,
     make_request_options,
 )
+from walledai.types.moderation_create_params import ModerationCreateParams
 
 from .utils import update_env
 
@@ -717,7 +719,7 @@ class TestWalledAI:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/guardrail",
-                body=cast(object, dict(text="text")),
+                body=cast(object, maybe_transform(dict(text="text"), ModerationCreateParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -732,7 +734,7 @@ class TestWalledAI:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/guardrail",
-                body=cast(object, dict(text="text")),
+                body=cast(object, maybe_transform(dict(text="text"), ModerationCreateParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1497,7 +1499,7 @@ class TestAsyncWalledAI:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/guardrail",
-                body=cast(object, dict(text="text")),
+                body=cast(object, maybe_transform(dict(text="text"), ModerationCreateParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1512,7 +1514,7 @@ class TestAsyncWalledAI:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/guardrail",
-                body=cast(object, dict(text="text")),
+                body=cast(object, maybe_transform(dict(text="text"), ModerationCreateParams)),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
