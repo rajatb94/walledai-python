@@ -76,7 +76,7 @@ class WalledAI(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous walledai client instance.
+        """Construct a new synchronous WalledAI client instance.
 
         This automatically infers the `api_key` argument from the `WALLEDAI_API_KEY` environment variable if it is not provided.
         """
@@ -244,7 +244,7 @@ class AsyncWalledAI(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async walledai client instance.
+        """Construct a new async AsyncWalledAI client instance.
 
         This automatically infers the `api_key` argument from the `WALLEDAI_API_KEY` environment variable if it is not provided.
         """
