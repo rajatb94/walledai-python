@@ -1,2 +1,4 @@
 configured_endpoints: 1
 openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/walledai%2Fwalledai-deb07f248b6b354cdd245ba4bd2e9711a57738d6ce906fe3324f5b33748f73c7.yml
+openapi_spec_hash: e8b7d22cd6ca52d45008ce5c440e094a
+config_hash: 1b2f557d36290a867e997890da5a9d94
