@@ -1,5 +1,45 @@
 # Changelog
 
+## 0.16.0-alpha (2025-03-27)
+
+Full Changelog: [v0.15.0-alpha...v0.16.0-alpha](https://github.com/rajatb94/walledai-python/compare/v0.15.0-alpha...v0.16.0-alpha)
+
+### Features
+
+* **client:** allow passing `NotGiven` for body ([#60](https://github.com/rajatb94/walledai-python/issues/60)) ([732bebf](https://github.com/rajatb94/walledai-python/commit/732bebfea9bffe1770fb5a306af76d40f1147f70))
+* **client:** send `X-Stainless-Read-Timeout` header ([#55](https://github.com/rajatb94/walledai-python/issues/55)) ([941f911](https://github.com/rajatb94/walledai-python/commit/941f9110e97a78c01ce7bfb236a4022457ddab7e))
+
+
+### Bug Fixes
+
+* asyncify on non-asyncio runtimes ([#59](https://github.com/rajatb94/walledai-python/issues/59)) ([0473ddf](https://github.com/rajatb94/walledai-python/commit/0473ddf52b53e056a222aea15e93a17efaaae2d3))
+* **ci:** ensure pip is always available ([#71](https://github.com/rajatb94/walledai-python/issues/71)) ([607209d](https://github.com/rajatb94/walledai-python/commit/607209d74900439451d8700565a4a2e94cffaee2))
+* **ci:** remove publishing patch ([#72](https://github.com/rajatb94/walledai-python/issues/72)) ([e762b2e](https://github.com/rajatb94/walledai-python/commit/e762b2e1f527464d4d315ba4bcb3b1f405600b93))
+* **client:** mark some request bodies as optional ([732bebf](https://github.com/rajatb94/walledai-python/commit/732bebfea9bffe1770fb5a306af76d40f1147f70))
+* **types:** handle more discriminated union shapes ([#70](https://github.com/rajatb94/walledai-python/issues/70)) ([e70577b](https://github.com/rajatb94/walledai-python/commit/e70577bfebc80480f0dd2bcaef96270990a45374))
+
+
+### Chores
+
+* **docs:** update client docstring ([#64](https://github.com/rajatb94/walledai-python/issues/64)) ([06185b8](https://github.com/rajatb94/walledai-python/commit/06185b84ccc0ee014815c3de3eecb2441cb5032b))
+* fix typos ([#73](https://github.com/rajatb94/walledai-python/issues/73)) ([9587711](https://github.com/rajatb94/walledai-python/commit/958771153c0a36f381148234fb41550b17b46103))
+* **internal:** bummp ruff dependency ([#54](https://github.com/rajatb94/walledai-python/issues/54)) ([293daba](https://github.com/rajatb94/walledai-python/commit/293dabae13c60421d1f70ecfffabb82e5ec30e5e))
+* **internal:** bump rye to 0.44.0 ([#69](https://github.com/rajatb94/walledai-python/issues/69)) ([1321d05](https://github.com/rajatb94/walledai-python/commit/1321d054e2bd5d81ee8ff728cb5501936241ed26))
+* **internal:** change default timeout to an int ([#52](https://github.com/rajatb94/walledai-python/issues/52)) ([e9caaf0](https://github.com/rajatb94/walledai-python/commit/e9caaf0ae6211f81bc77615b93070e610c141931))
+* **internal:** codegen related update ([#68](https://github.com/rajatb94/walledai-python/issues/68)) ([65f61c9](https://github.com/rajatb94/walledai-python/commit/65f61c9792c46a85d2b764247b4139993ff75693))
+* **internal:** fix devcontainers setup ([#61](https://github.com/rajatb94/walledai-python/issues/61)) ([86baf71](https://github.com/rajatb94/walledai-python/commit/86baf71ea8cd1daf2e8a05c39fd5c37efa7642e8))
+* **internal:** fix type traversing dictionary params ([#56](https://github.com/rajatb94/walledai-python/issues/56)) ([e2966b8](https://github.com/rajatb94/walledai-python/commit/e2966b8d32839d2ace23d562be36f91b981132de))
+* **internal:** minor type handling changes ([#57](https://github.com/rajatb94/walledai-python/issues/57)) ([246bdf6](https://github.com/rajatb94/walledai-python/commit/246bdf60c55cb9e26b36b99f0ea5198ff90554f0))
+* **internal:** properly set __pydantic_private__ ([#62](https://github.com/rajatb94/walledai-python/issues/62)) ([a7e476e](https://github.com/rajatb94/walledai-python/commit/a7e476ead0dbdd3b639766fee00a1c5dc683e4da))
+* **internal:** remove extra empty newlines ([#67](https://github.com/rajatb94/walledai-python/issues/67)) ([85bc4cd](https://github.com/rajatb94/walledai-python/commit/85bc4cdf819a8ced971fa0ff9b12edbb74c12053))
+* **internal:** remove unused http client options forwarding ([#65](https://github.com/rajatb94/walledai-python/issues/65)) ([ba646f9](https://github.com/rajatb94/walledai-python/commit/ba646f9a958ad0767ee547e38da8d36a633623b3))
+* **internal:** update client tests ([#58](https://github.com/rajatb94/walledai-python/issues/58)) ([912479f](https://github.com/rajatb94/walledai-python/commit/912479fb88e040f1dcd7b9acbcb51b6d7eb7b738))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#63](https://github.com/rajatb94/walledai-python/issues/63)) ([c086085](https://github.com/rajatb94/walledai-python/commit/c0860850fa8f33cfefc5a76ace776b9e2ecd8989))
+
 ## 0.15.0-alpha (2025-01-24)
 
 Full Changelog: [v0.14.0-alpha...v0.15.0-alpha](https://github.com/rajatb94/walledai-python/compare/v0.14.0-alpha...v0.15.0-alpha)
