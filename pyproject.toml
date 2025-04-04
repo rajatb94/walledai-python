@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "walledai"  # No spaces; Use lowercase
+version = "0.1.0"
+description = "A Python SDK for interacting with Walled AI"
+readme = "README.md"
+authors = [{ name = "Walled AI", email = "rishabh@walled.ai" }]
+license = { file = "LICENSE" }
+dependencies = ["requests>=2.25.1"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+[tool.setuptools.packages.find]
+where = ["src"]
