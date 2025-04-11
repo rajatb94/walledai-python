@@ -1,4 +1,5 @@
-from typing import TypedDict, List, NotRequired
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 class SafetyItem(TypedDict):
     safety: str

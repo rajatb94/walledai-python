@@ -9,7 +9,8 @@ description = "A Python SDK for interacting with Walled AI"
 readme = "README.md"
 authors = [{ name = "Walled AI", email = "rishabh@walled.ai" }]
 license = { file = "LICENSE" }
-dependencies = ["requests>=2.25.1"]
+requires-python=">=3.8"
+dependencies = ["requests>=2.25.1","typing_extensions>=4.0.0"]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
