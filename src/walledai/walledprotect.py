@@ -7,6 +7,7 @@ import requests
 import json
 import time
 from walledai.custom_types.guardrail import GuardRailResponse
+from typing import List
 class WalledProtect:
     ''' Walled Protect '''
     count=1
@@ -32,7 +33,7 @@ class WalledProtect:
         self.api_key = api_key
         self.retries=retries  
         self.timeout=timeout
-    def guardrail(self,text:str,greetings_list:list[str],text_type:str="prompt",generic_safety_check:bool=True)->GuardRailResponse:
+    def guardrail(self,text:str,greetings_list:List[str],text_type:str="prompt",generic_safety_check:bool=True)->GuardRailResponse:
         """
         Runs guardrails on the given input text to evaluate safety, PII, compliance, and greetings.
 

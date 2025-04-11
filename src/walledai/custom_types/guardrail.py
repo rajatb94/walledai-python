@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from typing_extensions import TypedDict, NotRequired
 
 class SafetyItem(TypedDict):
@@ -11,12 +11,12 @@ class GreetingItem(TypedDict):
     isPresent: bool
 
 class Data(TypedDict):
-    safety: NotRequired[List[SafetyItem]]  # Optional field
-    compliance: NotRequired[List]  # Optional field, empty list
-    pii: NotRequired[List]  # Optional field, empty list
-    greetings: NotRequired[List[GreetingItem]]  # Optional field
+    safety: NotRequired[Optional[List[SafetyItem]]]
+    compliance: NotRequired[Optional[List]]
+    pii: NotRequired[Optional[List]]
+    greetings: NotRequired[Optional[List[GreetingItem]]]
 
 class GuardRailResponse(TypedDict):
-    success:bool
-    data: NotRequired[Data]
-    error:NotRequired[Exception]
+    success: bool
+    data: NotRequired[Optional[Data]]
+    error: NotRequired[Optional[Exception]]
